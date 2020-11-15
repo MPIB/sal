@@ -12,6 +12,16 @@ from server.utils import get_setting
 # This table is also used for sequencing output, so use OrderedDict.
 OS_TABLE = OrderedDict(Darwin='macOS', Windows='Windows', Linux='Linux', ChromeOS='Chrome OS')
 
+# temporary hack, see https://github.com/salopensource/sal-scripts/issues/62
+# this needs to stay *until the DB does not contain wrong valus anymore*
+def os_key(x):
+    vers = x['operating_system']
+    if vers == 'X':
+        return LooseVersion('10.0.0')
+    else:
+        return LooseVersion(vers)
+# end hack
+
 
 class OperatingSystem(sal.plugin.Widget):
 
@@ -65,7 +75,7 @@ class OperatingSystem(sal.plugin.Widget):
 
             grouped['Chrome OS'] = chrome_items
         # you and your lambdas @sheacraig...
-        os_key = lambda x: LooseVersion(x["operating_system"])  # noqa: E731
+        #os_key = lambda x: LooseVersion(x["operating_system"])  # noqa: E731
         output = [
             (key, sorted(grouped[key], key=os_key, reverse=True)) for key in OS_TABLE.values()]
         context['os_info'] = output
