@@ -12,7 +12,7 @@ STATUSES = ('present', 'pending', 'error')
 class MunkiInstalls(sal.plugin.Widget):
 
     description = 'Chart of Munki install activity'
-    widget_width = 8
+    widget_width = 12
     supported_os_families = [sal.plugin.OSFamilies.darwin]
 
     def get_context(self, queryset, **kwargs):
