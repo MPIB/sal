@@ -2,3 +2,6 @@
 	path = server/plugins/mackeyboardlayouts
 	url = https://git.mpib-berlin.mpg.de/krause/sal_keyboardlayout_plugin.git
 	branch = main
+[submodule "server/plugins/osupgrades"]
+	path = server/plugins/osupgrades
+	url = https://git.mpib-berlin.mpg.de/krause/sal-osupgrades-plugin
