@@ -84,7 +84,7 @@ def tableajax(request, plugin_name, data, group_type="all", group_id=None):
         request, group_type=group_type, group_id=group_id
     )
     machines, title = plugin_object.filter_machines(queryset, data)
-    machines = machines.values("id", "hostname", "console_user", "last_checkin")
+    machines = machines.values("id", "hostname", "console_user", "machine_model_friendly", "last_checkin")
 
     if len(order_name) != 0:
         if order_direction == "desc":
@@ -96,7 +96,8 @@ def tableajax(request, plugin_name, data, group_type="all", group_id=None):
         hostname_q = Q(hostname__icontains=search_value)
         user_q = Q(console_user__icontains=search_value)
         checkin_q = Q(last_checkin__icontains=search_value)
-        searched_machines = machines.filter(hostname_q | user_q | checkin_q).order_by(
+        model_q = Q(machine_model_friendly__icontains=search_value)
+        searched_machines = machines.filter(hostname_q | user_q | checkin_q | model_q).order_by(
             order_string
         )
     else:
@@ -135,7 +136,8 @@ def tableajax(request, plugin_name, data, group_type="all", group_id=None):
             escape(machine["hostname"]),
         )
 
-        list_data = [hostname_link, escape(machine["console_user"]), formatted_date]
+        list_data = [hostname_link, escape(machine["console_user"]),
+                     escape(machine['machine_model_friendly']), formatted_date]
         return_data["data"].append(list_data)
 
     return JsonResponse(return_data)
