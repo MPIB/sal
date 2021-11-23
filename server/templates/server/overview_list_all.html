@@ -18,11 +18,12 @@
             "initComplete": function ( settings, json) {
               $('<div/>').html(json.title).prependTo('#title');},
             stateSave: true,
-            "order": [2,'desc'],
+            "order": [3,'desc'],
             "orderMulti": false,
             "columns": [
                 { "name": "hostname" },
                 { "name": "console_user" },
+                { "name": "machine_model_friendly" },
                 { "name": "last_checkin" },
             ],
         });
@@ -46,6 +47,7 @@
                     <tr>
                       <th>Machine</th>
                       <th>User</th>
+                      <th>Model</th>
                       <th>Latest Run</th>
                     </tr>
                 </thead>
