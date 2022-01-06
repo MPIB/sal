@@ -1,7 +1,11 @@
 [submodule "server/plugins/mackeyboardlayouts"]
 	path = server/plugins/mackeyboardlayouts
-	url = https://git.mpib-berlin.mpg.de/krause/sal_keyboardlayout_plugin.git
+	url = https://git.mpib-berlin.mpg.de/krause/sal_keyboardlayout_plugin
 	branch = main
 [submodule "server/plugins/osupgrades"]
 	path = server/plugins/osupgrades
 	url = https://git.mpib-berlin.mpg.de/krause/sal-osupgrades-plugin
+[submodule "server/plugins/batteryhealth"]
+	path = server/plugins/batteryhealth
+	url = https://git.mpib-berlin.mpg.de/krause/sal-batteryhealth-plugin
+	branch = main
