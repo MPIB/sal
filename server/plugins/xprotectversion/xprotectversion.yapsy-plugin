@@ -3,7 +3,6 @@ Name = XprotectVersion
 Module = xprotectversion
 
 [Documentation]
-Author = Graham Gilbert
+Author = Michael Krause
 Version = 0.1
-Website = http://grahamgilbert.com
 Description = Xprotect version
